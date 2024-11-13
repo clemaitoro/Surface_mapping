@@ -29,7 +29,7 @@ add_custom_target(_ur_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg" NAME_WE)
 add_custom_target(_ur_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur_msgs" "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg" "ur_msgs/Analog:ur_msgs/Digital"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur_msgs" "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg" "ur_msgs/Digital:ur_msgs/Analog"
 )
 
 get_filename_component(_filename "/home/roboai/catkin_ws/src/ur_msgs/msg/RobotStateRTMsg.msg" NAME_WE)
@@ -98,7 +98,7 @@ _generate_msg_cpp(ur_msgs
 _generate_msg_cpp(ur_msgs
   "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg"
+  "/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_cpp(ur_msgs
@@ -219,7 +219,7 @@ _generate_msg_eus(ur_msgs
 _generate_msg_eus(ur_msgs
   "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg"
+  "/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_eus(ur_msgs
@@ -340,7 +340,7 @@ _generate_msg_lisp(ur_msgs
 _generate_msg_lisp(ur_msgs
   "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg"
+  "/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_lisp(ur_msgs
@@ -461,7 +461,7 @@ _generate_msg_nodejs(ur_msgs
 _generate_msg_nodejs(ur_msgs
   "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg"
+  "/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_nodejs(ur_msgs
@@ -582,7 +582,7 @@ _generate_msg_py(ur_msgs
 _generate_msg_py(ur_msgs
   "/home/roboai/catkin_ws/src/ur_msgs/msg/IOStates.msg"
   "${MSG_I_FLAGS}"
-  "/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg"
+  "/home/roboai/catkin_ws/src/ur_msgs/msg/Digital.msg;/home/roboai/catkin_ws/src/ur_msgs/msg/Analog.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur_msgs
 )
 _generate_msg_py(ur_msgs

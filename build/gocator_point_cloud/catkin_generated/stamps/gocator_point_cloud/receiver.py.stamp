@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+"""
+catkin_make install
+rosrun your_package_name test_node1
+rosrun gocator_point_cloud receiver.py
+"""
 import rospy
 from sensor_msgs.msg import PointCloud2
 import sensor_msgs.point_cloud2 as pc2
@@ -35,7 +40,7 @@ def stop_tcp_node():
         tcp_node_process = None
         rospy.loginfo("Stopped TCP node.")
 
-def tcp_pose_callback(msg):
+def tcp_pose_callback(msg): #TransformStamped
     """Callback for the /tcp_position topic."""
     global tcp_y_count
     if -418.8 <= msg.transform.translation.y <= -418.7:
@@ -58,7 +63,7 @@ def tcp_pose_callback(msg):
         }
     })
 
-def gocator_callback(point_msg):
+def gocator_callback(point_msg): #PointStamped
     """Callback for the gocator_coordinates topic."""
     rate = rospy.Rate(1000)  
 
@@ -70,11 +75,16 @@ def gocator_callback(point_msg):
         roll, pitch, yaw = closest_pose['pose']['rx'], closest_pose['pose']['ry'], closest_pose['pose']['rz']
         rotation_matrix = tf.transformations.euler_matrix(roll, pitch, yaw, axes='sxyz')[:3, :3]
         translation_vector = np.array([closest_pose['pose']['x'], closest_pose['pose']['y'], closest_pose['pose']['z']])
+        
+        
+
 
         # Transform the point from Gocator data using the TCP pose
-        point_vector = np.array([point_msg.point.x, 0, point_msg.point.z])  # Set y to TCP y
+        point_vector = np.array([point_msg.point.x, point_msg.point.y, point_msg.point.z]) 
         point_rotated = np.dot(rotation_matrix, point_vector)
         point_transformed = point_rotated + translation_vector
+        point_transformed[0] = -abs(point_transformed[0])
+
         
 
         # Publish transformed point to the point cloud topic
@@ -89,7 +99,9 @@ def gocator_callback(point_msg):
         with open('transformed_points_final.csv', 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([
-                point_msg.point.x, point_msg.point.z
+                point_msg.point.y, 
+                point_rotated[1],
+                point_transformed[0], point_transformed[1]
             ])
 
 def find_closest_tcp_pose(batch_time_ns):
