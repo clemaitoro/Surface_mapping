@@ -1,0 +1,8 @@
+prefix=/home/roboai/catkin_ws/install
+
+Name: gocator_point_cloud
+Description: Description of gocator_point_cloud
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/roboai/catkin_ws/install
+
+Name: gocator
+Description: Description of gocator
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
