@@ -20,6 +20,7 @@ def read_signed_16bit(client, address, unit=1):
             raw_value -= 65536
         return raw_value
 
+
 # Function to read TCP position and orientation from the UR5e robot
 def read_tcp_position_orientation(client, unit=1):
     addresses = {
@@ -89,15 +90,13 @@ def publish_tcp_data(client, pub, rate):
                 transform.transform.rotation.w = quaternion[3]
 
                 pub.publish(transform)
-                print(f"Published moving TCP Data: {current_tcp_data} {ros_time}")
+                rate.sleep()
+                # print(f"Published moving TCP Data: {current_tcp_data} {ros_time}")
             # else:
                 # rospy.loginfo("Robot is stationary. No data published.")
                 # pass
 
             # Update last_tcp_data for the next iteration
-        last_tcp_data = current_tcp_data
-
-        rate.sleep()
 
 def main():
     # Initialize the ROS node
